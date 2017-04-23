@@ -3,8 +3,11 @@ cmake_minimum_required(VERSION 2.8)
 project( Main ) # this is case sensitive
 
 add_executable( Main main.cpp )
+add_definitions("-std=c++11")
+
 find_package(OpenGL REQUIRED)
 if (OPENGL_FOUND)
+    include_directories(${OPENGL_INCLUDE_DIRS})
     target_link_libraries(Main ${OPENGL_LIBRARIES})
 endif()
 
