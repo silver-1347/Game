@@ -9,3 +9,5 @@ cmake .
 make
 ./Main
 ```
+## 参考
+http://marina.sys.wakayama-u.ac.jp/~tokoi/GLFW.pdf
