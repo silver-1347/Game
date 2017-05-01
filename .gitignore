@@ -2,3 +2,8 @@ Main
 CMakeCache.txt
 Makefile
 CMakeFiles/
+cmake_install.cmake
+
+
+# スタティックライブラリは一応追跡しない
+*.a
