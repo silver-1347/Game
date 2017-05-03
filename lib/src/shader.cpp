@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 
 #include "shader.hpp"
 
@@ -85,8 +86,8 @@ GLuint createProgram(const char* vsrc, const char* fsrc){
     return program;
 }
 
-bool readShaderSource(const char* name, std::vector<GLchar> &buffer){
-    if (name == NULL) return false;
+bool readShaderSource(const std::string& name, std::vector<GLchar> &buffer){
+    if (name.size() == 0) return false;
 
     std::ifstream file(name,std::ios::binary);
     if(file.fail()){
@@ -112,7 +113,7 @@ bool readShaderSource(const char* name, std::vector<GLchar> &buffer){
     return true;
 }
 
-GLuint loadProgram(const char* vert, const char* frag){
+GLuint loadProgram(const std::string& vert, const std::string& frag){
     std::vector<GLchar> vsrc;
     bool vstat = readShaderSource(vert,vsrc);
     std::vector<GLchar> fsrc;

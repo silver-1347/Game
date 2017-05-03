@@ -3,8 +3,8 @@
 
 extern GLboolean printShaderInfoLog(GLuint shader,const char* str);
 extern GLboolean printProgramInfoLog(GLuint program);
-extern GLuint createProgram(const char* vsrc, const char* fsrc);
-extern bool readShaderSource(const char* name, std::vector<GLchar> &buffer);
-extern GLuint loadProgram(const char* vert, const char* frag);
+extern GLuint createProgram(const std::string& vsrc, const std::string& fsrc);
+extern bool readShaderSource(const std::string& name, std::vector<GLchar> &buffer);
+extern GLuint loadProgram(const std::string& vert, const std::string& frag);
 
 #endif

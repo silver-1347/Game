@@ -4,8 +4,11 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <string>
 
 #include "shader.hpp"
+
+const std::string shader_dir = "shader/";
 
 int main(void)
 {
@@ -44,7 +47,7 @@ int main(void)
     //同期タイミング
     glfwSwapInterval(1);
 
-    const GLuint program(loadProgram("point.vert","point.frag"));
+    const GLuint program(loadProgram(shader_dir + "point.vert", shader_dir + "point.frag"));
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)){
