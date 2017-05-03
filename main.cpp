@@ -5,10 +5,20 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
+#include <memory>
 
 #include "shader.hpp"
 
+#include "Shape.hpp"
+
 const std::string shader_dir = "shader/";
+
+const Object::Vertex rectangleVertex[] ={
+    {-0.5f,-0.5f},
+    { 0.5f,-0.5f},
+    { 0.5f, 0.5f},
+    {-0.5f, 0.5f}
+};
 
 int main(void)
 {
@@ -47,7 +57,12 @@ int main(void)
     //同期タイミング
     glfwSwapInterval(1);
 
+    glClearColor(1.0f,1.0f,1.0f,0.0f);
+
     const GLuint program(loadProgram(shader_dir + "point.vert", shader_dir + "point.frag"));
+
+    //図形データ作成
+    std::unique_ptr<const Shape> shape(new Shape(2,4,rectangleVertex));
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)){
@@ -55,6 +70,9 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(program);
+
+        // 図形描画
+        shape->draw();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
